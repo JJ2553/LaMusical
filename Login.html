@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>La Musical</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/jpg" href="imagenes/Logo2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="estilos/contenedores.css">
+  <link rel="stylesheet" href="estilos/estilosletra.css">
+  <script>
+    function showAlert() {
+    event.preventDefault();
+    const successAlert = document.getElementById("success-alert");
+    successAlert.style.display = "block";
+    setTimeout(function() {
+            window.location.href = "index.html";
+        }, 3000);
+    }
+</script>
+  </head>
+  <header>
+    <section id="banner">
+    </section>
+  </header>
+<br><br><br>
+  <maIn  style="background-image: url(imagenes/Fondolog.png);width: 1350px;height:650px;">
+    <br>
+    <center>
+      <hr width="20%" color="white">
+    </center>
+    <br>
+    <h1>
+      <font color="silver">
+        CUENTA
+      </font>
+
+    </h1>
+    <br>
+    <center>
+      <hr width="20%" color="white">
+    </center>
+    
+    <center>
+      
+      <div class="login-container">
+        <a href="index.html" class="enlace-negro">
+        <div class="circle-button" style="margin-left: 85%;margin-top: 2%;">
+          <div class="x">X</div>
+        </a>
+      </div>
+    
+        <h2>Iniciar Sesión</h2>
+        <form>
+            <label for="username">Nombre de Usuario:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required><br>
+            <a href="olvidaste.html" class="enlace-negro">¿Olvidaste tu contraseña?</a><br><br>
+            <input onclick="showAlert()" type="submit" value="Iniciar Sesión">
+            <br><br>
+            <a href="registro.html" class="enlace-negro">
+            <div class="create-account-box">
+              <center>
+                <p>Crear cuenta</p>
+              </center>
+          </div>
+        </a>
+        </form>
+        <div id="success-alert" class="hidden">
+          <p>¡Inicio de sesión correcto!</p>
+      </div>
+      <script src="script.js"></script>   
+    </div>
+    </center>
+    
+  </maIn>
+  <br><br><br><br>
+  <footer>
+    <section id="izquierdafooter">
+      <center>
+      <img src="imagenes/Logo2.png" width="150px" style="padding-left: 15px;padding-top: 15px;">     
+        <p aling="left">
+          <font face="Arial" size="3" color="black" style="padding-left: 15px;">
+            Tienda Virtual de La Musical, una marca de <br>            
+          </font>
+          <font face="Arial" size="3" color="black" style="padding-left: 15px;">
+            Centro Musical S.A.S.           
+          </font>
+        </p>    
+        <br>
+        <img src="imagenes/facebook.png" class="icon">
+        <img src="imagenes/instagram.png" class="icon">
+        <img src="imagenes/you.png" class="icon" style="padding-bottom: 8px;">
+        <img src="imagenes/whats.png" class="icon">
+      </center>
+    </section>
+    <section id="derechafooter">
+      <br>
+       <pre>
+        NUESTRAS SEDES FÍSICAS EN LA CIUDAD DE BOGOTÁ
+Sede Principal: Carrera 7 # 56A - 54
+
+Sede Norte: Calle 175 # 43 17
+
+Ten en cuenta que solo tenemos tiendas en Bogotá y envíos a diferentes 
+ciudades solo a través de nuestra página web www.lamusical.com.
+o consignaciones solo a nombre de La Musical SAS
+
+PBX: (1) 329 77 77
+       </pre>      
+    </section>
+</footer>
+<hr color="black">
+<br>
+<font color="grey" style="padding: 15px;">
+  2023 La Musical
+</font>
+<br>
+</html>
