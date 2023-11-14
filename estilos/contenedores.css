@@ -432,9 +432,9 @@ section#izquierda{
 
 .result-container {
     margin-top: 10px;
+    height: auto;
     background-color: #1d0a8a;
     color: white;
-    padding: 10px;
     border-radius: 5px;
     text-align: center; 
     margin: 10px auto; 
