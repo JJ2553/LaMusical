@@ -83,6 +83,7 @@ main{
 
 }
 
+
 section#centrar{
     width: 938px; 
     height: 646px;
@@ -90,6 +91,10 @@ section#centrar{
     background-color:rgb(255, 255, 255);
     border: black 2px solid;
     
+}
+section#centrar img.zoomable:hover {
+    transition: transform 0.3s;
+    transform: scale(1.09);  
 }
 section#derecha{
     width: 405px; 
@@ -234,7 +239,7 @@ section#derechafooter{
     text-align: center;
     margin: 50px auto;
     padding: 20px;
-    max-width: 300px;
+    width: 300px;
     background-color: #a8a8a8;
 }
 form {
@@ -250,7 +255,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"], 
+input[type="number"] {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
@@ -395,4 +401,64 @@ section#izquierda{
     width: 280px;
 }
 
+#operation,#claseSelect {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #333;
+  }
+  
+  #operation option,#claseSelect option {
+    background-color: #f0f0f0;
+    color: #333;
+  }
 
+  .my-button{
+    width: 100%;
+    padding: 10px;
+    background-color: #333; 
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.my-button:hover{
+    background-color: #ff0000;
+}
+
+.result-container {
+    margin-top: 10px;
+    background-color: #1d0a8a;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center; 
+    margin: 10px auto; 
+  }
+
+.mas-o-menos{
+    border: 0;
+    background-color: #ffffff; 
+    height: 40px;
+    width: 50px;
+    color: #9d9d9d;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.mas-o-menos:hover{
+    color: #ff0000;
+}
+
+.border{
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+
+  
