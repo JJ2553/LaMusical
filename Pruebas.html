@@ -1,50 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="estilos/contenedores.css">
+  <meta charset="utf-8">
+  <title>Pruebas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/jpg" href="imagenes/Logo2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="estilos/contenedores.css">
+  <link rel="stylesheet" href="estilos/estilosletra.css">
+  <script>
+    function showAlert() {
+    event.preventDefault();
+    const successAlert = document.getElementById("success-alert");
+    successAlert.style.display = "block";
+    setTimeout(function() {
+            window.location.href = "index.html";
+        }, 3000);
+    }
+</script>
+  </head>
+  <header>
+    <section id="banner">
+    </section>
+  </header>
+    <title>Registro de Notas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <h1>Proceso de producción de huevos</h1>
-  <p>Ingresa los valores de Gallinas y diás:</p>
 
-  <label for="x">Gallinas:</label>
-  <input type="number" id="x" step="any" placeholder="Ingresa numero de gallina">
+    <h1>Registro de Notas</h1>
 
-  <label for="n">Dias:</label>
-  <input type="number" id="n" placeholder="Ingresa numero de dias">
+    <label for="numMaterias">Número de Materias:</label>
+    <input type="number" id="numMaterias" min="1" placeholder="Ingrese el número de materias">
 
-  <button class="my-button" onclick="calcularResultado()">Calcular</button>
-  <div class="result-container">
-  <p>Resultado: <span id="resultado"></span></p>
-</div>
-  <script>
-      function calcularResultado() {
-          var x = parseFloat(document.getElementById("x").value);
-          var n = parseInt(document.getElementById("n").value);
-          var resultado = calcularEx(x, n);
-          document.getElementById("resultado").textContent =" la produccipon de huevos es igual a " + resultado;
-      }
+    <label for="numEstudiantes">Número de Estudiantes:</label>
+    <input type="number" id="numEstudiantes" min="1" placeholder="Ingrese el número de estudiantes">
 
-      function calcularEx(x, n) {
-          var resultado = 0;
+    <button class="my-button" onclick="generarTabla()">Generar Tabla</button>
+    <br><br>
+    <button class="my-button" onclick="calcularPromediossss()">Calcular Promedios</button>
+    <div class="result-container" style="background-color: rgb(96, 96, 96);">
+        <p id="vacio">Resultado:</p>
+    </div>
+    <p id="tabla-container" style="background-color: cadetblue;"> </p>
+    <script>
+        function generarTabla() {
+            var numMaterias = document.getElementById("numMaterias").value;
+            var numEstudiantes = document.getElementById("numEstudiantes").value;
 
-          for (var i = 0; i <= n; i++) {
-              resultado += Math.pow(x, i) / factorial(i);
-          }
+            // Validar que se haya ingresado un número válido
+            if (isNaN(numMaterias) || isNaN(numEstudiantes) || numMaterias <= 0 || numEstudiantes <= 0) {
+                document.getElementById("vacio").textContent = "Ingrese datos válidos";
+                return;
+            }
 
-          return resultado;
-      }
+            var tabla = "<table><tr><th>Estudiante</th>";
 
-      function factorial(num) {
-          if (num === 0) {
-              return 1;
-          }
-          return num * factorial(num - 1);
-      }
-  </script>
+            // Crear encabezados de materias
+            for (var i = 1; i <= numMaterias; i++) {
+                tabla += "<th>Materia " + i + "</th>";
+            }
+
+            tabla += "</tr>";
+
+            // Crear filas y celdas para cada estudiante y materia
+            for (var i = 1; i <= numEstudiantes; i++) {
+                tabla += "<tr><td>Estudiante " + i + "</td>";
+
+                for (var j = 1; j <= numMaterias; j++) {
+                    tabla += "<td><input type='number' id='nota-" + i + "-" + j + "' placeholder='Nota'></td>";
+                }
+
+                tabla += "</tr>";
+            }
+
+            tabla += "</table>";
+
+            // Agregar la tabla al cuerpo del documento
+            document.getElementById("tabla-container").innerHTML = tabla;
+        }
+
+        function calcularPromediossss() {
+            var numMaterias = document.getElementById("numMaterias").value;
+            var numEstudiantes = document.getElementById("numEstudiantes").value;
+
+            var promediosEstudiantes = [];
+            var promediosMaterias = [];
+
+            var tablaResultados = "<h3>Resultados</h3><table><tr><th>Estudiante</th>";
+
+            // Agregar encabezados de materias a la tabla de resultados
+            for (var i = 1; i <= numMaterias; i++) {
+                tablaResultados += "<th>Materia " + i + "</th>";
+            }
+            tablaResultados += "<th>Promedio</th></tr>";
+
+            for (var i = 1; i <= numEstudiantes; i++) {
+                var sumEstudiante = 0;
+
+                tablaResultados += "<tr><td>Estudiante " + i + "</td>";
+
+                for (var j = 1; j <= numMaterias; j++) {
+                    var nota = parseFloat(document.getElementById("nota-" + i + "-" + j).value) || 0;
+                    sumEstudiante += nota;
+                    tablaResultados += "<td>" + nota + "</td>";
+                }
+
+                var promedioEstudiante = sumEstudiante / numMaterias;
+                promediosEstudiantes.push(promedioEstudiante.toFixed(2));
+
+                tablaResultados += "<td>" + promedioEstudiante.toFixed(2) + "</td></tr>";
+            }
+
+            // Calcular promedios de materias
+            tablaResultados += "<tr><td>Promedio Materias</td>";
+
+            for (var j = 1; j <= numMaterias; j++) {
+                var sumMateria = 0;
+
+                for (var i = 1; i <= numEstudiantes; i++) {
+                    var nota = parseFloat(document.getElementById("nota-" + i + "-" + j).value) || 0;
+                    sumMateria += nota;
+                }
+
+                var promedioMateria = sumMateria / numEstudiantes;
+                promediosMaterias.push(promedioMateria.toFixed(2));
+
+                tablaResultados += "<td>" + promedioMateria.toFixed(2) + "</td>";
+            }
+
+            tablaResultados += "</tr></table>";
+
+            // Mostrar resultados en el contenedor
+            document.getElementById("tabla-container").innerHTML = tablaResultados;
+        }
+    </script>
+
 </body>
 </html>
 

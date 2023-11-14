@@ -34,8 +34,11 @@ function seleccionarClase() {
     <br>
     <div style="margin-top: 10px;">
         <button class="my-button" onclick="ejecutarFunciones()">Ejecutar Funciones</button>
-        <p id="resultado""></p>
+        
     </div>
+    <div class="result-container" style="background-color: rgb(96, 96, 96);">
+      <p id="resultadoae"">Resultado</p>
+      </div>
     `;
     break;
 
@@ -129,23 +132,37 @@ case "clase6":
   case "clase8":
   resultado.innerHTML = `
   <h1>Proceso de producción de huevos</h1>
-  <p>Ingresa los valores de Gallinas y diás:</p>
+<p>Ingresa los valores de Gallinas y días:</p>
 
-  <label for="x">Gallinas:</label>
-  <input type="number" id="x" step="any" placeholder="Ingresa numero de gallina">
+<label for="x">Gallinas:</label>
+<input type="number" id="x" placeholder="Ingresa numero de gallina">
 
-  <label for="n">Dias:</label>
-  <input type="number" id="n" placeholder="Ingresa numero de dias">
+<label for="n">Días:</label>
+<input type="number" id="n" placeholder="Ingresa numero de días">
 
-  <button class="my-button" onclick="calcularResultado()">Calcular</button>
-  <div class="result-container">
-  <p>Resultado: <span id="resultado"></span></p>
+<button class="my-button" onclick="calcularResultado()">Calcular</button>
+<div class="result-container">
+  <p id="resultadoaa">Resulatdo:</p>
 </div>
 `;
   break;
   case "clase9":
   resultado.innerHTML = `
-  
+  <h1>Registro de Notas</h1>
+
+    <label for="numMaterias">Número de Materias:</label>
+    <input type="number" id="numMaterias" min="1" placeholder="Ingrese el número de materias">
+
+    <label for="numEstudiantes">Número de Estudiantes:</label>
+    <input type="number" id="numEstudiantes" min="1" placeholder="Ingrese el número de estudiantes">
+
+    <button class="my-button" onclick="generarTabla()">Generar Tabla</button>
+    <br><br>
+    <button class="my-button" onclick="calcularPromediossss()">Calcular Promedios</button>
+    <div class="result-container" style="background-color: rgb(96, 96, 96);">
+        <p id="vacio">Resultado:</p>
+    </div>
+    <p id="tabla-container"  style="background-color: cadetblue;"> </p>
 `;
   break;
   case "clase10":
@@ -156,7 +173,7 @@ case "clase6":
     }
   }
   
-  
+  //Programa1
   function calculate() {
     const operation = document.getElementById("operation").value;
     const num1 = parseFloat(document.getElementById("num1").value);
@@ -187,6 +204,7 @@ case "clase6":
   }
 
 
+  //Programa 2
   function suma(a, b) {
     return a + b;
   }
@@ -237,20 +255,22 @@ case "clase6":
   }
   
           function ejecutarFunciones() {
-              const resultadoElement = document.getElementById('resultado');
-              resultadoElement.innerHTML = '';
+              const resultadoaeElement = document.getElementById('resultadoae');
+              resultadoaeElement.innerHTML = '';
             
-              resultadoElement.innerHTML += "<b>a + b:</b> Toma a y b (3 y 5) y devuelve la suma. = " + suma(5, 3) + "<br>";
-              resultadoElement.innerHTML += "<b>a - b:</b> Toma a y b (10 y 4) y devuelve la resta. = " + resta(10, 4) + "<br>";
-              resultadoElement.innerHTML += "<b>a * b:</b> Toma a y b (6 y 2) y devuelve la multiplicación. = " + multiplicacion(6, 2) + "<br>";
-              resultadoElement.innerHTML += "<b>a / b:</b> Toma a y b (8 y 4) y devuelve la división. =  " + division(8, 4) + "<br>";
-              resultadoElement.innerHTML += "<b>Math.abs(numero):</b> toma un número (-10) y devuelve su valor absoluto. = " + valorAbsoluto(-10) + "<br>";
-              resultadoElement.innerHTML += "<b>ath.sqrt(numero):</b> Toma un número (25) y calcula su raíz cuadrada. = " + raizCuadrada(25) + "<br>";
-              resultadoElement.innerHTML += "<b>Math.pow(base, exponente):</b> toma dos argumentos, base y exponente (2 y 3) , y calcula la potencia. = " + potencia(2, 3) + "<br>";
-              resultadoElement.innerHTML += "<b>Math.round(numero):</b> Redondea un número (4.6) al entero más cercano. = " + redondeoCercano(4.6) + "<br>";
-              resultadoElement.innerHTML += "<b>Math.floor(numero):</b> Redondea un número (4.6) hacia abajo al entero más cercano. = " + redondeoAbajo(4.6) + "<br>";
-              resultadoElement.innerHTML += "<b>Math.ceil(numero):</b> Redondea un número (4.6) hacia arriba al entero más cercano. = " + redondeoArriba(4.6) + "<br>";
+              resultadoaeElement.innerHTML += "<b>a + b:</b> Toma a y b (3 y 5) y devuelve la suma. = " + suma(5, 3) + "<br>";
+              resultadoaeElement.innerHTML += "<b>a - b:</b> Toma a y b (10 y 4) y devuelve la resta. = " + resta(10, 4) + "<br>";
+              resultadoaeElement.innerHTML += "<b>a * b:</b> Toma a y b (6 y 2) y devuelve la multiplicación. = " + multiplicacion(6, 2) + "<br>";
+              resultadoaeElement.innerHTML += "<b>a / b:</b> Toma a y b (8 y 4) y devuelve la división. =  " + division(8, 4) + "<br>";
+              resultadoaeElement.innerHTML += "<b>Math.abs(numero):</b> toma un número (-10) y devuelve su valor absoluto. = " + valorAbsoluto(-10) + "<br>";
+              resultadoaeElement.innerHTML += "<b>ath.sqrt(numero):</b> Toma un número (25) y calcula su raíz cuadrada. = " + raizCuadrada(25) + "<br>";
+              resultadoaeElement.innerHTML += "<b>Math.pow(base, exponente):</b> toma dos argumentos, base y exponente (2 y 3) , y calcula la potencia. = " + potencia(2, 3) + "<br>";
+              resultadoaeElement.innerHTML += "<b>Math.round(numero):</b> Redondea un número (4.6) al entero más cercano. = " + redondeoCercano(4.6) + "<br>";
+              resultadoaeElement.innerHTML += "<b>Math.floor(numero):</b> Redondea un número (4.6) hacia abajo al entero más cercano. = " + redondeoAbajo(4.6) + "<br>";
+              resultadoaeElement.innerHTML += "<b>Math.ceil(numero):</b> Redondea un número (4.6) hacia arriba al entero más cercano. = " + redondeoArriba(4.6) + "<br>";
           }
+
+      //Programa 3
 
           function calcularPuntaje() {
             const respuestasCorrectas = parseInt(document.getElementById("respuestasCorrectas").value);
@@ -265,7 +285,7 @@ case "clase6":
                 document.getElementById("puntajeFinal").textContent = "El puntaje final del postulante es: " + puntajeFinal;
             }
         }
-        
+      //programa 4
         function calcularIncentivos() {
           const produccion = parseInt(document.getElementById("produccion").value);
           let ingresoTotal = 2 * produccion;  
@@ -297,7 +317,7 @@ case "clase6":
           document.getElementById("puntajeFinal").innerHTML = "Salario Semanal: $" + salarioSemanal;;
       }
 
-
+      //programa 5
       let temperaturas = [];
         let numErrores = 0;
         let datosIngresados = false;
@@ -357,6 +377,7 @@ case "clase6":
                 document.getElementById(elementId).textContent = "";
             }, 3000); // 5000 milliseconds (5 seconds)
         }
+        //Programa 6
 
       let positivos = 0;
       let negativos = 0;
@@ -386,6 +407,8 @@ case "clase6":
           document.getElementById('sumNegativos').textContent = sumNegativosText;
           document.getElementById('inputNumber').value = ''; // Limpiar el campo de entrada después de contar
       }
+
+      //Programa 7
   
       const personas = [];
       const categorias = ["Niños", "Jóvenes", "Adultos", "Viejos"];
@@ -439,31 +462,119 @@ case "clase6":
         }
       } 
 
+      //Programa 8
+
       function calcularResultado() {
         var x = parseFloat(document.getElementById("x").value);
         var n = parseInt(document.getElementById("n").value);
-        var resultado = calcularEx(x, n);
-        document.getElementById("resultado").textContent =" la produccipon de huevos es igual a " + resultado;
-    }
-
-    function calcularEx(x, n) {
-        var resultado = 0;
-
+        var resultadoaa = 0;
+    
         for (var i = 0; i <= n; i++) {
-            resultado += Math.pow(x, i) / factorial(i);
+          resultadoaa += Math.pow(x, i) / factorial(i);
         }
-
-        return resultado;
-    }
-
-    function factorial(num) {
-        if (num === 0) {
-            return 1;
+    
+        document.getElementById("resultadoaa").innerHTML = "Resultado: " + resultadoaa;
+    
+        function factorial(num) {
+            return num === 0 ? 1 : num * factorial(num - 1);
         }
-        return num * factorial(num - 1);
     }
+    
+//Programa 9
+function generarTabla() {
+  var numMaterias = document.getElementById("numMaterias").value;
+  var numEstudiantes = document.getElementById("numEstudiantes").value;
+
+  // Validar que se haya ingresado un número válido
+  if (isNaN(numMaterias) || isNaN(numEstudiantes) || numMaterias <= 0 || numEstudiantes <= 0) {
+      document.getElementById("vacio").textContent = "Ingrese datos válidos";
+      return;
+  }
+
+  var tabla = "<table><tr><th>Estudiante</th>";
+
+  // Crear encabezados de materias
+  for (var i = 1; i <= numMaterias; i++) {
+      tabla += "<th>Materia " + i + "</th>";
+  }
+
+  tabla += "</tr>";
+
+  // Crear filas y celdas para cada estudiante y materia
+  for (var i = 1; i <= numEstudiantes; i++) {
+      tabla += "<tr><td>Estudiante " + i + "</td>";
+
+      for (var j = 1; j <= numMaterias; j++) {
+          tabla += "<td><input type='number' id='nota-" + i + "-" + j + "' placeholder='Nota'></td>";
+      }
+
+      tabla += "</tr>";
+  }
+
+  tabla += "</table>";
+
+  // Agregar la tabla al cuerpo del documento
+  document.getElementById("tabla-container").innerHTML = tabla;
+}
+
+function calcularPromediossss() {
+  var numMaterias = document.getElementById("numMaterias").value;
+  var numEstudiantes = document.getElementById("numEstudiantes").value;
+
+  var promediosEstudiantes = [];
+  var promediosMaterias = [];
+
+  var tablaResultados = "<h3>Resultados</h3><table><tr><th>Estudiante</th>";
+
+  // Agregar encabezados de materias a la tabla de resultados
+  for (var i = 1; i <= numMaterias; i++) {
+      tablaResultados += "<th>Materia " + i + "</th>";
+  }
+  tablaResultados += "<th>Promedio</th></tr>";
+
+  for (var i = 1; i <= numEstudiantes; i++) {
+      var sumEstudiante = 0;
+
+      tablaResultados += "<tr><td>Estudiante " + i + "</td>";
+
+      for (var j = 1; j <= numMaterias; j++) {
+          var nota = parseFloat(document.getElementById("nota-" + i + "-" + j).value) || 0;
+          sumEstudiante += nota;
+          tablaResultados += "<td>" + nota + "</td>";
+      }
+
+      var promedioEstudiante = sumEstudiante / numMaterias;
+      promediosEstudiantes.push(promedioEstudiante.toFixed(2));
+
+      tablaResultados += "<td>" + promedioEstudiante.toFixed(2) + "</td></tr>";
+  }
+
+  // Calcular promedios de materias
+  tablaResultados += "<tr><td>Promedio Materias</td>";
+
+  for (var j = 1; j <= numMaterias; j++) {
+      var sumMateria = 0;
+
+      for (var i = 1; i <= numEstudiantes; i++) {
+          var nota = parseFloat(document.getElementById("nota-" + i + "-" + j).value) || 0;
+          sumMateria += nota;
+      }
+
+      var promedioMateria = sumMateria / numEstudiantes;
+      promediosMaterias.push(promedioMateria.toFixed(2));
+
+      tablaResultados += "<td>" + promedioMateria.toFixed(2) + "</td>";
+  }
+
+  tablaResultados += "</tr></table>";
+
+  // Mostrar resultados en el contenedor
+  document.getElementById("tabla-container").innerHTML = tablaResultados;
+}
 
 
+
+  //otro cosa
   var cantidad = 1;
 
 function incrementar() {
