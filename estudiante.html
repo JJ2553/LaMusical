@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>La Musical</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/jpg" href="imagenes/Logo2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="estilos/contenedores.css">
+  <link rel="stylesheet" href="estilos/estilosletra.css">
+  </head>
+  <header>
+    <section id="banner">
+      <div id="seccion-importante">
+        </div>
+    </section>
+  </header>
+  <br><br><br><br>
+
+    <main style="height: auto;width: auto;">
+        <section id="centrar" style="width: 100%;height: 100%;background-color: #a2a2a2;">
+            <div style="background-color: #a2a2a2;">
+                <a href="Programas.html" class="enlace-negro">
+                  <div class="circle-button" style="margin-left: 85%;margin-top: 2%;">
+                    <div class="x">X</div>
+                  </a>
+                </div>
+            <h1>Registro de Notas</h1>
+<br>
+    <label style="margin-left: 45%;" for="numMaterias">Número de Materias:</label>
+    <center>
+        <input style="width: 200px;" type="number" id="numMaterias" min="1" placeholder="Ingrese el número de materias">
+    </center>
+
+    <label style="margin-left: 45%;" for="numEstudiantes">Número de Estudiantes:</label>
+    <center>
+        <input style="width: 200px;" type="number" id="numEstudiantes" min="1" placeholder="Ingrese el número de estudiantes">
+    </center>
+    <center>
+        <button style="width: 300px;" class="my-button" onclick="generarTabla()">Generar Tabla</button>
+        <br><br>
+        <button style="width: 300px;" class="my-button" onclick="calcularPromediossss()">Calcular Promedios</button>
+    </center>
+    
+    <div class="result-container" style="background-color: #a2a2a2;">
+        <p id="vacio"></p>
+    </div>
+    <p id="tabla-container"  style="background-color: cadetblue;margin-left: 30px;margin-right: 30px;"> </p>
+    <br>
+        </section>
+    </main>
+
+    <script>
+        function generarTabla() {
+  var numMaterias = document.getElementById("numMaterias").value;
+  var numEstudiantes = document.getElementById("numEstudiantes").value;
+
+  // Validar que se haya ingresado un número válido
+  if (isNaN(numMaterias) || isNaN(numEstudiantes) || numMaterias <= 0 || numEstudiantes <= 0) {
+      document.getElementById("vacio").textContent = "Ingrese datos válidos";
+      return;
+  }
+
+  var tabla = "<table><tr><th>Estudiante</th>";
+
+  // Crear encabezados de materias
+  for (var i = 1; i <= numMaterias; i++) {
+      tabla += "<th>Materia " + i + "</th>";
+  }
+
+  tabla += "</tr>";
+
+  // Crear filas y celdas para cada estudiante y materia
+  for (var i = 1; i <= numEstudiantes; i++) {
+      tabla += "<tr><td>Estudiante " + i + "</td>";
+
+      for (var j = 1; j <= numMaterias; j++) {
+          tabla += "<td><input type='number' id='nota-" + i + "-" + j + "' placeholder='Nota'></td>";
+      }
+
+      tabla += "</tr>";
+  }
+
+  tabla += "</table>";
+
+  // Agregar la tabla al cuerpo del documento
+  document.getElementById("tabla-container").innerHTML = tabla;
+}
+
+function calcularPromediossss() {
+  var numMaterias = document.getElementById("numMaterias").value;
+  var numEstudiantes = document.getElementById("numEstudiantes").value;
+
+  var promediosEstudiantes = [];
+  var promediosMaterias = [];
+
+  var tablaResultados = "<h3>Resultados</h3><table><tr><th>Estudiante</th>";
+
+  // Agregar encabezados de materias a la tabla de resultados
+  for (var i = 1; i <= numMaterias; i++) {
+      tablaResultados += "<th>Materia " + i + "</th>";
+  }
+  tablaResultados += "<th>Promedio</th></tr>";
+
+  for (var i = 1; i <= numEstudiantes; i++) {
+      var sumEstudiante = 0;
+
+      tablaResultados += "<tr><td>Estudiante " + i + "</td>";
+
+      for (var j = 1; j <= numMaterias; j++) {
+          var nota = parseFloat(document.getElementById("nota-" + i + "-" + j).value) || 0;
+          sumEstudiante += nota;
+          tablaResultados += "<td>" + nota + "</td>";
+      }
+
+      var promedioEstudiante = sumEstudiante / numMaterias;
+      promediosEstudiantes.push(promedioEstudiante.toFixed(2));
+
+      tablaResultados += "<td>" + promedioEstudiante.toFixed(2) + "</td></tr>";
+  }
+
+  // Calcular promedios de materias
+  tablaResultados += "<tr><td>Promedio Materias</td>";
+
+  for (var j = 1; j <= numMaterias; j++) {
+      var sumMateria = 0;
+
+      for (var i = 1; i <= numEstudiantes; i++) {
+          var nota = parseFloat(document.getElementById("nota-" + i + "-" + j).value) || 0;
+          sumMateria += nota;
+      }
+
+      var promedioMateria = sumMateria / numEstudiantes;
+      promediosMaterias.push(promedioMateria.toFixed(2));
+
+      tablaResultados += "<td>" + promedioMateria.toFixed(2) + "</td>";
+  }
+
+  tablaResultados += "</tr></table>";
+
+  // Mostrar resultados en el contenedor
+  document.getElementById("tabla-container").innerHTML = tablaResultados;
+}
+    </script>
+
+
+
+
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <footer>
+    <section id="izquierdafooter">
+      <center>
+      <img src="imagenes/Logo2.png" width="150px" style="padding-left: 15px;padding-top: 15px;">     
+        <p aling="left">
+          <font face="Arial" size="3" color="black" style="padding-left: 15px;">
+            Tienda Virtual de La Musical, una marca de <br>            
+          </font>
+          <font face="Arial" size="3" color="black" style="padding-left: 15px;">
+            Centro Musical S.A.S.           
+          </font>
+        </p>    
+        <img src="imagenes/facebook.png" class="icon">
+        <img src="imagenes/instagram.png" class="icon">
+        <img src="imagenes/you.png" class="icon" style="padding-bottom: 8px;">
+        <img src="imagenes/whats.png" class="icon">
+      </center>
+    </section>
+    <section id="derechafooter">
+      <br>
+       <pre>
+        NUESTRAS SEDES FÍSICAS EN LA CIUDAD DE BOGOTÁ
+Sede Principal: Carrera 7 # 56A - 54
+
+Sede Norte: Calle 175 # 43 17
+
+Ten en cuenta que solo tenemos tiendas en Bogotá y envíos a diferentes 
+ciudades solo a través de nuestra página web www.lamusical.com.
+o consignaciones solo a nombre de La Musical SAS
+
+PBX: (1) 329 77 77
+       </pre>      
+    </section>
+</footer>
+<hr color="black">
+<br>
+<font color="grey" style="padding: 15px;">
+  2023 La Musical
+</font>
+<br>
+</html>
+
+

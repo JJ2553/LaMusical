@@ -148,26 +148,20 @@ case "clase6":
   break;
   case "clase9":
   resultado.innerHTML = `
-  <h1>Registro de Notas</h1>
-
-    <label for="numMaterias">Número de Materias:</label>
-    <input type="number" id="numMaterias" min="1" placeholder="Ingrese el número de materias">
-
-    <label for="numEstudiantes">Número de Estudiantes:</label>
-    <input type="number" id="numEstudiantes" min="1" placeholder="Ingrese el número de estudiantes">
-
-    <button class="my-button" onclick="generarTabla()">Generar Tabla</button>
-    <br><br>
-    <button class="my-button" onclick="calcularPromediossss()">Calcular Promedios</button>
-    <div class="result-container" style="background-color: rgb(96, 96, 96);">
-        <p id="vacio">Resultado:</p>
-    </div>
-    <p id="tabla-container"  style="background-color: cadetblue;"> </p>
+  <a href="estudiante.html">
+  <button class="my-button">
+    <p>Ir al programa</p>
+    </button>
+    </a>
 `;
   break;
   case "clase10":
   resultado.innerHTML = `
-  
+  <a href="nomina.html">
+  <button class="my-button">
+    <p>Ir a la nomina</p>
+    </button>
+    </a>
 `;
   break;
     }
@@ -479,100 +473,6 @@ case "clase6":
             return num === 0 ? 1 : num * factorial(num - 1);
         }
     }
-    
-//Programa 9
-function generarTabla() {
-  var numMaterias = document.getElementById("numMaterias").value;
-  var numEstudiantes = document.getElementById("numEstudiantes").value;
-
-  // Validar que se haya ingresado un número válido
-  if (isNaN(numMaterias) || isNaN(numEstudiantes) || numMaterias <= 0 || numEstudiantes <= 0) {
-      document.getElementById("vacio").textContent = "Ingrese datos válidos";
-      return;
-  }
-
-  var tabla = "<table><tr><th>Estudiante</th>";
-
-  // Crear encabezados de materias
-  for (var i = 1; i <= numMaterias; i++) {
-      tabla += "<th>Materia " + i + "</th>";
-  }
-
-  tabla += "</tr>";
-
-  // Crear filas y celdas para cada estudiante y materia
-  for (var i = 1; i <= numEstudiantes; i++) {
-      tabla += "<tr><td>Estudiante " + i + "</td>";
-
-      for (var j = 1; j <= numMaterias; j++) {
-          tabla += "<td><input type='number' id='nota-" + i + "-" + j + "' placeholder='Nota'></td>";
-      }
-
-      tabla += "</tr>";
-  }
-
-  tabla += "</table>";
-
-  // Agregar la tabla al cuerpo del documento
-  document.getElementById("tabla-container").innerHTML = tabla;
-}
-
-function calcularPromediossss() {
-  var numMaterias = document.getElementById("numMaterias").value;
-  var numEstudiantes = document.getElementById("numEstudiantes").value;
-
-  var promediosEstudiantes = [];
-  var promediosMaterias = [];
-
-  var tablaResultados = "<h3>Resultados</h3><table><tr><th>Estudiante</th>";
-
-  // Agregar encabezados de materias a la tabla de resultados
-  for (var i = 1; i <= numMaterias; i++) {
-      tablaResultados += "<th>Materia " + i + "</th>";
-  }
-  tablaResultados += "<th>Promedio</th></tr>";
-
-  for (var i = 1; i <= numEstudiantes; i++) {
-      var sumEstudiante = 0;
-
-      tablaResultados += "<tr><td>Estudiante " + i + "</td>";
-
-      for (var j = 1; j <= numMaterias; j++) {
-          var nota = parseFloat(document.getElementById("nota-" + i + "-" + j).value) || 0;
-          sumEstudiante += nota;
-          tablaResultados += "<td>" + nota + "</td>";
-      }
-
-      var promedioEstudiante = sumEstudiante / numMaterias;
-      promediosEstudiantes.push(promedioEstudiante.toFixed(2));
-
-      tablaResultados += "<td>" + promedioEstudiante.toFixed(2) + "</td></tr>";
-  }
-
-  // Calcular promedios de materias
-  tablaResultados += "<tr><td>Promedio Materias</td>";
-
-  for (var j = 1; j <= numMaterias; j++) {
-      var sumMateria = 0;
-
-      for (var i = 1; i <= numEstudiantes; i++) {
-          var nota = parseFloat(document.getElementById("nota-" + i + "-" + j).value) || 0;
-          sumMateria += nota;
-      }
-
-      var promedioMateria = sumMateria / numEstudiantes;
-      promediosMaterias.push(promedioMateria.toFixed(2));
-
-      tablaResultados += "<td>" + promedioMateria.toFixed(2) + "</td>";
-  }
-
-  tablaResultados += "</tr></table>";
-
-  // Mostrar resultados en el contenedor
-  document.getElementById("tabla-container").innerHTML = tablaResultados;
-}
-
-
 
   //otro cosa
   var cantidad = 1;
