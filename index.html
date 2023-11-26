@@ -10,13 +10,19 @@
   <link rel="stylesheet" href="estilos/estilosletra.css">
   </head>
   <header>
-    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <section id="banner">
       <div id="seccion-importante">
         </div>
     </section>
   </header>
   <section id="log-in">
+    <div id="carrito">
+      <h2>Carrito de Compras</h2>
+      <ul id="listaCarrito"></ul>
+      <p>Total: $<span id="total"></span></p>
+      <button class="my-button" id="vaciarCarrito">Vaciar Carrito</button>
+    </div>
     <h1>
       <a href="Login.html" class="enlace-negro">Cuenta</a> 
       <br> 
@@ -25,6 +31,12 @@
       <a href="Programas.html" class="enlace-negro">Programas</a> 
       <br> 
     </h1>
+    <br>
+    <center>
+      <button style="border: #000000;" id="mostrarCarrito"><i class="fas fa-shopping-cart fa-2xl"></i>
+      </button>
+    </center>
+    <script src="js/carro.js"></script>
   </section>
   <br>
     <nav>

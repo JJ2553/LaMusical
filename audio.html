@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="estilos/estilosletra.css">
   </head>
   <header>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <section id="banner">
     </section>
   </header>
@@ -21,6 +22,19 @@
     <a href="Login.html" class="enlace-negro">Cuenta</a>    
   </h1>
   <br>
+  <br>
+    <center>
+        <button style="border: #000000;" id="mostrarCarrito"><i class="fas fa-shopping-cart fa-2xl"></i>
+        </button>
+      </center>
+      <br>
+      <div id="carrito">
+        <h2>Carrito de Compras</h2>
+        <ul id="listaCarrito"></ul>
+        <p>Total: $<span id="total"></span></p>
+        <button class="my-button" id="vaciarCarrito">Vaciar Carrito</button>
+      </div>
+      <script src="js/carro.js"></script>
 </section>
 <br>
 <h1>
